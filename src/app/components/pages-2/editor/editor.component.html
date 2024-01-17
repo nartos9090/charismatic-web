@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="mb-3">
+        <label class="form-label">Judul</label>
+        <input type="text" class="form-control" id="input-title" (keyup)="onKeyTitle($event)" [value]="title">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Foto Produk</label>
+        <input type="file" class="form-control" id="input-product-image" (input)="onInputProductImage($event)">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    </div>
+</div>

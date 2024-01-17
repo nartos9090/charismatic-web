@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <a href="/editor/{{ productImageId }}/generate">
+                <img src="{{ productImage }}" class="img-fluid">
+            </a>
+        </div>
+        <ng-template ngFor let-generatedImage [ngForOf]="generatedImages">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a href="/editor/{{ generatedImage.id }}/generate">
+                    <img src="{{ generatedImage.image_url }}" class="img-fluid">
+                </a>
+            </div>
+        </ng-template>
+    </div>
+</div>

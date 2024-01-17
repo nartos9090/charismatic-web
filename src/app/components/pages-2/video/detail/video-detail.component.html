@@ -1,0 +1,20 @@
+<div class="container d-flex flex-column" style="gap: 16px;">
+    <ng-template ngFor let-scene [ngForOf]="scenes">
+        <div class="card" style="width: 100%;">
+            <div class="card-header">
+                <h5 class="card-title">{{scene.title}}</h5>
+            </div>
+            <div class="flex-row d-flex">
+                <img src="{{scene.illustration_url}}" class="card-img-left flex-grow-0 flex-shrink-0 p-3" alt="{{ scene.title }}" style="width: 40%;">
+                <div class="card-body">
+                    <p class="card-text">{{scene.narration}}</p>
+                    <button class="btn btn-primary">Play</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary">Download</button>
+    </div>
+</div>

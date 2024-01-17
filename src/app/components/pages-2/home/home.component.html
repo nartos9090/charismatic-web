@@ -1,0 +1,12 @@
+<div class="container d-flex flex-column" style="gap: 16px;">
+    <a *ngFor="let item of items; index as i" href="/{{ (item.type === 'video' ? 'video' : item.type === 'copywriting' ? 'copywriter' : item.type === 'product_image' ? 'editor' : '#' ) }}/{{item.id}}" class="text-decoration-none">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <span *ngIf="item.type === 'video'" class="badge bg-warning">Video</span>
+                <span *ngIf="item.type === 'copywriting'" class="badge bg-primary">Copywriting</span>
+                <span *ngIf="item.type === 'product_image'" class="badge bg-success">Foto</span>
+            </div>
+        </div>
+    </a>
+</div>
