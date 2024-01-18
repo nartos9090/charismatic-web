@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {ApiService} from '../../../services/api/api.service'
 import {Router} from '@angular/router'
-import {load} from '@angular-devkit/build-angular/src/utils/server-rendering/esm-in-memory-loader/loader-hooks'
 
 @Component({
   selector: 'app-copywriter',
@@ -59,5 +58,4 @@ export class CopywriterComponent {
     }
   }
 
-  protected readonly load = load
 }
