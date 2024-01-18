@@ -56,7 +56,7 @@ export class VideoComponent {
       }
       const {data, status} = await this.apiService.axios.post('/v1/video-project/generate-sync',  payload)
 
-      this.router.navigate(['/video/' + data.id])
+      this.router.navigate(['/video/' + data.data.id])
     } catch (error) {
       console.log(error)
     } finally {

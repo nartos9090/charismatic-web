@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {GeneratedImageItem} from './editor-detail.component.type'
 import {ApiService} from '../../../../services/api/api.service'
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 
 @Component({
   selector: 'app-editor-detail',
@@ -16,9 +16,13 @@ export class EditorDetailComponent {
 
   generatedImages: GeneratedImageItem[] = []
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
     this.productImageId = this.route.snapshot.params['product_image_id']
     this.fetch()
+  }
+
+  regenerate() {
+    this.router.navigate(['/editor/' + this.productImageId + '/generate'])
   }
 
   async fetch() {

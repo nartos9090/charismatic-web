@@ -12,6 +12,7 @@ export class EditorComponent {
   loading = false
   title = ''
   productImage: File = null
+  prompt = ''
 
   onKeyTitle(event: KeyboardEvent) {
     this.title = (event.target as HTMLInputElement).value
@@ -19,6 +20,10 @@ export class EditorComponent {
 
   onInputProductImage(event: Event) {
     this.productImage = (event.target as HTMLInputElement).files[0]
+  }
+
+  onKeyPrompt(event: KeyboardEvent) {
+    this.prompt = (event.target as HTMLInputElement).value
   }
 
   constructor(private apiService: ApiService, private router: Router) {
@@ -30,12 +35,13 @@ export class EditorComponent {
       const payload = new FormData()
       console.log(this.productImage)
       payload.append('title', this.title)
-      payload.append('product_image', this.productImage)
-      payload.append('mask_image', this.productImage)
+      payload.append('image', this.productImage)
+      payload.append('mask', this.productImage)
+      payload.append('prompt', this.prompt)
 
       const { data } = await this.apiService.axios.post('/v1/product-image/create-sync', payload)
 
-      this.router.navigate(['/editor/' + data.id])
+      this.router.navigate(['/editor/' + data.data.product_image_id])
     } catch (error) {
       console.log(error)
     } finally {
