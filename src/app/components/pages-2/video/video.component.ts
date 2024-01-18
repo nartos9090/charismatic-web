@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ApiService} from '../../../services/api/api.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-video',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './video.component.scss'
 })
 export class VideoComponent {
+  loading = false
   title = '';
   brandName = '';
   productType = '';
@@ -37,7 +40,27 @@ export class VideoComponent {
     this.duration = Number((event.target as HTMLInputElement).value);
   }
 
-  onSubmit() {
-    alert('Thanks!');
+  constructor(private apiService: ApiService, private router: Router) {
+  }
+
+  async onSubmit() {
+    this.loading = true
+    try {
+      const payload = {
+        product_title: this.title,
+        brand_name: this.brandName,
+        product_type: this.productType,
+        market_target: this.marketTarget,
+        superiority: this.superiority,
+        duration: this.duration
+      }
+      const {data, status} = await this.apiService.axios.post('/v1/video-project/generate-sync',  payload)
+
+      this.router.navigate(['/video/' + data.id])
+    } catch (error) {
+      console.log(error)
+    } finally {
+      this.loading = false
+    }
   }
 }

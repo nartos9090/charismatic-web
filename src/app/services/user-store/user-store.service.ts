@@ -10,5 +10,16 @@ export class UserStoreService {
 
   user: User
 
-  constructor() { }
+  constructor() {
+
+  }
+
+  ngInit() {
+    this.user = JSON.parse(localStorage.getItem('user'))
+  }
+
+  setUser(user: User) {
+    this.user = user
+    localStorage.setItem('user', JSON.stringify(user))
+  }
 }

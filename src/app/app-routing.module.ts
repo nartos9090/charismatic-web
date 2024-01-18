@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'video', component: VideoComponent},
   {path: 'video/:video_id', component: VideoDetailComponent},
   {path: 'copywriter', component: CopywriterComponent},
-  {path: 'copywriter/:copywriter_id', component: CopywriterDetailComponent},
+  {path: 'copywriter/:project_id', component: CopywriterDetailComponent},
   {path: 'editor', component: EditorComponent},
   {path: 'editor/:product_image_id', component: EditorDetailComponent},
   {path: 'editor/:product_image_id/generate', component: EditorDetailGenerateComponent},

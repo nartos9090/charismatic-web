@@ -23,7 +23,7 @@
                 <div class="d-flex align-items-center">
                     <div [ngSwitch]="userStore.isLoggedIn" class="option-item">
                         <a *ngSwitchCase="true" routerLink="/" class="default-btn">Dashboard<span></span></a>
-                        <a *ngSwitchCase="false" routerLink="/" class="default-btn">Login<span></span></a>
+                        <asl-google-signin-button *ngSwitchCase="false" type='icon' size='medium'>Login</asl-google-signin-button>
                     </div>
                 </div>
             </div>

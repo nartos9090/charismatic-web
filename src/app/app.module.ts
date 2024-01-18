@@ -39,6 +39,12 @@ import {
 import {EditorDetailComponent} from './components/pages-2/editor/detail/editor-detail.component'
 import {PrivacyPolicyComponent} from './components/pages-2/privacy-policy/privacy-policy.component'
 import {AccountDeletionComponent} from './components/pages-2/account-deletion/account-deletion.component'
+import {
+  GoogleLoginProvider,
+  GoogleSigninButtonModule,
+  SocialAuthServiceConfig,
+  SocialLoginModule,
+} from '@abacritt/angularx-social-login'
 
 @NgModule({
   declarations: [
@@ -80,9 +86,26 @@ import {AccountDeletionComponent} from './components/pages-2/account-deletion/ac
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '486443363784-uc5rftc2prusqmgk1jdn0kl399ua1a4i.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

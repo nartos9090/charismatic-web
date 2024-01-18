@@ -25,6 +25,6 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-primary" (click)="onSubmit()">Generate Storyboard</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()" disabled="{{ loading }}">{{ loading ? 'Loading...' : 'Generate Storyboard'}}</button>
     </div>
 </div>

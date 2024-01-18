@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {GeneratedImageItem} from './editor-detail.component.type'
+import {ApiService} from '../../../../services/api/api.service'
+import {ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-editor-detail',
@@ -7,22 +9,30 @@ import {GeneratedImageItem} from './editor-detail.component.type'
   styleUrl: './editor-detail.component.scss'
 })
 export class EditorDetailComponent {
+  loading = 0
   productImageId = 0
   productImage = ''
   maskImage = ''
 
-  generatedImages: GeneratedImageItem[] = [
-    {
-      "id": 4,
-      "product_image_id": 31,
-      "image_url": "public\\images\\1705350733.png",
-      "prompt": "mountain view with sun"
-    },
-    {
-      "id": 5,
-      "product_image_id": 31,
-      "image_url": "public\\images\\1705350865.png",
-      "prompt": "river view with sun"
+  generatedImages: GeneratedImageItem[] = []
+
+  constructor(private apiService: ApiService, private route: ActivatedRoute) {
+    this.productImageId = this.route.snapshot.params['product_image_id']
+    this.fetch()
+  }
+
+  async fetch() {
+    this.loading = 1
+    try {
+      const { data } = await this.apiService.axios.get(`/v1/product-image/detail/${this.productImageId}`)
+      const { generated_images, ...item } = data.data
+      this.productImage = item.image_url
+      this.maskImage = item.mask_url
+      this.generatedImages = generated_images
+    } catch (error) {
+      console.log(error)
+    } finally {
+      this.loading = 0
     }
-  ]
+  }
 }

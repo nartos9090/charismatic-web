@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {HistoryItem} from './home.component.type'
+import {ApiService} from '../../../services/api/api.service'
 
 @Component({
   selector: 'app-home',
@@ -8,30 +9,22 @@ import {HistoryItem} from './home.component.type'
 })
 export class HomeComponent {
 
-  items: HistoryItem[] = [
-    {
-      created_at: "2024-01-16 03:31:54",
-      title: "A beautiful girl",
-      type: "product_image",
-      id: 31
-    },
-    {
-      created_at: "2024-01-15 00:03:06",
-      title: "Air mineral AquaVita",
-      type: "copywriting",
-      id: 3
-    },
-    {
-      created_at: "2024-01-14 19:47:29",
-      title: "AquaVita",
-      type: "video",
-      id: 13
-    },
-    {
-      created_at: "2024-01-14 18:51:32",
-      title: "AquaVita",
-      type: "video",
-      id: 12
+  loading = false
+  items: HistoryItem[] = []
+
+  constructor(private apiService: ApiService) {
+    this.fetch()
+  }
+
+  async fetch() {
+    this.loading = true
+    try {
+      const { data } = await this.apiService.axios.get('/v1/history')
+      this.items = data.data
+    } catch (error) {
+      console.log(error)
+    } finally {
+      this.loading = false
     }
-  ]
+  }
 }

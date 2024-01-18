@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {ApiService} from '../../../services/api/api.service'
+import {Router} from '@angular/router'
+import {load} from '@angular-devkit/build-angular/src/utils/server-rendering/esm-in-memory-loader/loader-hooks'
 
 @Component({
   selector: 'app-copywriter',
@@ -6,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './copywriter.component.scss'
 })
 export class CopywriterComponent {
-
+  loading = false
   title = ''
   productImage: File = null
   brandName = ''
@@ -33,10 +36,28 @@ export class CopywriterComponent {
     this.superiority = (event.target as HTMLInputElement).value
   }
 
-  constructor() {
+  constructor(private apiService: ApiService, private router: Router) {
   }
 
-  onSubmit() {
-    alert('Thanks!');
+  async onSubmit() {
+    this.loading = true
+    try {
+      const payload = new FormData()
+      payload.append('title', this.title)
+      payload.append('product_image', this.productImage)
+      payload.append('brand_name', this.brandName)
+      payload.append('market_target', this.marketTarget)
+      payload.append('superiority', this.superiority)
+
+      const { data } = await this.apiService.axios.post('/v1/copywriting-project/create-sync', payload)
+
+      this.router.navigate(['/copywriter/' + data.id])
+    } catch (error) {
+      console.log(error)
+    } finally {
+      this.loading = false
+    }
   }
+
+  protected readonly load = load
 }
