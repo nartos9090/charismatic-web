@@ -38,12 +38,14 @@ import {
 } from './components/pages-2/editor/detail/generate/editor-detail-generate.component'
 import {EditorDetailComponent} from './components/pages-2/editor/detail/editor-detail.component'
 import {PrivacyPolicyComponent} from './components/pages-2/privacy-policy/privacy-policy.component'
+import {AccountDeletionComponent} from './components/pages-2/account-deletion/account-deletion.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PreloaderComponent,
     FooterComponent,
+    AccountDeletionComponent,
     NavbarLandingComponent,
     NavbarComponent,
     SubscribeComponent,

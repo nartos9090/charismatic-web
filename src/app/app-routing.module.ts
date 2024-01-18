@@ -12,10 +12,12 @@ import {
 } from './components/pages-2/editor/detail/generate/editor-detail-generate.component'
 import {EditorDetailComponent} from './components/pages-2/editor/detail/editor-detail.component'
 import {PrivacyPolicyComponent} from './components/pages-2/privacy-policy/privacy-policy.component'
+import {AccountDeletionComponent} from './components/pages-2/account-deletion/account-deletion.component'
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
   {path: 'privacy-policy', component: PrivacyPolicyComponent},
+  {path: 'account-deletion', component: AccountDeletionComponent},
   {path: 'home', component: HomeComponent},
   {path: 'video', component: VideoComponent},
   {path: 'video/:video_id', component: VideoDetailComponent},
