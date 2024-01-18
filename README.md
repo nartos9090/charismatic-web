@@ -28,63 +28,26 @@ Follow this link for the production works. [https://charismatic.niwabi.my.id](ht
 
 ## Requirements
 
-1. Mysql Database
-2. Go Programming Language. Follow the instructions [here](https://go.dev/doc/install) to install.
+1. Node JS v18
 
 ## How to use
 
-Create ```.env``` file in the root folder. See the example below.
+Run the app in development
 
-Run the app
+```npm run start```
 
-```go run main```
+By default, it will run in ```127.0.0.1:4200```.
 
-By default, it will run in ```127.0.0.1:8000```.
+## Snapshots
 
-## API Documentation
+1. Landing page
+   ![image](https://github.com/nartos9090/charismatic-web/assets/23381724/305fe9b6-f083-44df-9d69-db52c1495f62)
 
-Follow the link [https://documenter.getpostman.com/view/9208271/2s9YsRdVAT](https://documenter.getpostman.com/view/9208271/2s9YsRdVAT) to get the API Documentation.
+2. History
+   ![image](https://github.com/nartos9090/charismatic-web/assets/23381724/41a93d35-9c2d-473e-8746-29ddc26082f0)
 
-### Testing environment
+3. Copywriter result
+   ![image](https://github.com/nartos9090/charismatic-web/assets/23381724/78160088-12c9-4ddd-810a-d1f8f39b92ec)
 
-Create ```.env``` file in the root folder and fill with this configuration.
-
-```
-HTTP_PORT=127.0.0.1:8000
-JWT_SECRET=qwerty123
-
-DALLE_API_KEY=
-ELEVENLABS_API_KEY=
-GEMINI_API_KEY=
-```
-
-*To prevent github guard check, the API KEY will be provided in the submission file.
-
-
-# ApzieNg
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+4. Video Storyboard Result
+![image](https://github.com/nartos9090/charismatic-web/assets/23381724/d92c03c4-341f-4b47-8265-0d4498f43b45)
