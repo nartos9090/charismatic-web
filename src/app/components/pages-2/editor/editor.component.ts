@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ApiService} from '../../../services/api/api.service'
 import {Router} from '@angular/router'
+const imglyRemoveBackground = import('@imgly/background-removal')
 
 @Component({
   selector: 'app-editor',
@@ -11,7 +12,7 @@ export class EditorComponent {
 
   loading = false
   title = ''
-  productImage: File = null
+  productImage: Blob = null
   prompt = ''
 
   onKeyTitle(event: KeyboardEvent) {
@@ -19,7 +20,22 @@ export class EditorComponent {
   }
 
   onInputProductImage(event: Event) {
-    this.productImage = (event.target as HTMLInputElement).files[0]
+    const file = (event.target as HTMLInputElement).files[0]
+    const reader = new FileReader();
+
+    reader.onload =  (e) => {
+      const imageData = e.target.result;
+
+      // Convert the image data to a Blob
+      const [blob, mime] = this.dataURItoBlob(imageData);
+
+      (await imglyRemoveBackground)(blob).then((result) => {
+        this.productImage = new File([result], file.name, { type: mime })
+        console.log(this.productImage)
+      })
+    };
+
+    reader.readAsDataURL(file);
   }
 
   onKeyPrompt(event: KeyboardEvent) {
@@ -29,11 +45,23 @@ export class EditorComponent {
   constructor(private apiService: ApiService, private router: Router) {
   }
 
+  dataURItoBlob(dataURI) {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return [new Blob([ab], { type: mimeString }), mimeString];
+  }
+
   async onSubmit() {
     this.loading = true
     try {
       const payload = new FormData()
-      console.log(this.productImage)
       payload.append('title', this.title)
       payload.append('image', this.productImage)
       payload.append('mask', this.productImage)
