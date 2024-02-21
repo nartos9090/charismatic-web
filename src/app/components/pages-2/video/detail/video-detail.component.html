@@ -1,4 +1,33 @@
 <div class="container d-flex flex-column" style="gap: 16px;">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">{{ item.brand_name }}</h5>
+        </div>
+        <div class="flex-row d-flex">
+            <div class="card-body">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td class="p-3">Nama Produk</td>
+                        <td class="p-3">{{item.product_title}}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Target Pasar</td>
+                        <td class="p-3">{{item.market_target}}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Jenis Produk</td>
+                        <td class="p-3">{{item.product_type}}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3">Keunggulan Produk</td>
+                        <td class="p-3">{{item.superiority}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <ng-template ngFor let-scene [ngForOf]="scenes">
         <div class="card" style="width: 100%;">

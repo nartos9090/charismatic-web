@@ -33,10 +33,9 @@ export class EditorComponent {
     this.loading = true
     try {
       const payload = new FormData()
-      console.log(this.productImage)
       payload.append('title', this.title)
       payload.append('image', this.productImage)
-      payload.append('mask', this.productImage)
+      // payload.append('mask', this.productImage)
       payload.append('prompt', this.prompt)
 
       const { data } = await this.apiService.axios.post('/v1/product-image/create-sync', payload)

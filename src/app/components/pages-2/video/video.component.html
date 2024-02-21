@@ -1,30 +1,37 @@
 <div class="container">
-    <div class="mb-3">
-        <label class="form-label">Judul</label>
-        <input type="text" class="form-control" id="input-title" (keyup)="onKeyTitle($event)" [value]="title">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Nama Brand</label>
-        <input type="text" class="form-control" id="input-brand-name" (keyup)="onKeyBrandName($event)" [value]="brandName">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Jenis Produk</label>
-        <input type="text" class="form-control" id="input-product-type" (keyup)="onKeyProductType($event)" [value]="productType">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Target Pasar</label>
-        <input type="text" class="form-control" id="input-market-target" (keyup)="onKeyMarketTarget($event)" [value]="marketTarget">
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Keunggulan</label>
-        <textarea class="form-control" id="input-superiority" (keyup)="onKeySuperiority($event)" [value]="superiority"></textarea>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Durasi Video (detik)</label>
-        <input type="number" class="form-control" id="input-duration" (keyup)="onKeyDuration($event)" [value]="duration">
-    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Buat Video Storyboard</h5>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label">Judul</label>
+                <input type="text" class="form-control" id="input-title" (keyup)="onKeyTitle($event)" [value]="title" placeholder="Judul Storyboard">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nama Brand</label>
+                <input type="text" class="form-control" id="input-brand-name" (keyup)="onKeyBrandName($event)" [value]="brandName" placeholder="Nama Brand">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Jenis Produk</label>
+                <input type="text" class="form-control" id="input-product-type" (keyup)="onKeyProductType($event)" [value]="productType" placeholder="Jenis Produk">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Target Pasar</label>
+                <input type="text" class="form-control" id="input-market-target" (keyup)="onKeyMarketTarget($event)" [value]="marketTarget" placeholder="Target Pasar">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Keunggulan</label>
+                <textarea class="form-control" id="input-superiority" (keyup)="onKeySuperiority($event)" [value]="superiority" style="height: 200px;" placeholder="Deskripsi Keunggulan Produk"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Durasi Video (detik)</label>
+                <input type="number" class="form-control" id="input-duration" (keyup)="onKeyDuration($event)" [value]="duration" placeholder="(detik)">
+            </div>
 
-    <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-primary" (click)="onSubmit()">{{ loading ? 'Loading...' : 'Generate Storyboard'}}</button>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" (click)="onSubmit()">{{ loading ? 'Loading...' : 'Generate Storyboard'}}</button>
+            </div>
+        </div>
     </div>
 </div>

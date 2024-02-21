@@ -1,9 +1,33 @@
 <div class="container">
-    <textarea class="form-control" rows="8" id="result" name="result" placeholder="Result" readonly>{{result}}</textarea>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Copywriting {{ title }}</h3>
+        </div>
+        <div class="card-body">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="p-3">Nama Brand</td>
+                    <td class="p-3">{{brand_name}}</td>
+                </tr>
+                <tr>
+                    <td class="p-3">Target Pasar</td>
+                    <td class="p-3">{{market_target}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>
+                Hasil:
+            </h5>
+            <div [innerHTML]="result">
+            </div>
+        </div>
+    </div>
 
     <div class="d-flex justify-content-center mt-4">
         <button class="btn btn-primary" type="button" (click)="saveComment()">
-            Simpan
+            Salin
         </button>
     </div>
 </div>

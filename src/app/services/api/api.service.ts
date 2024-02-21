@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://charismatic-api.niwabi.my.id/',
+  baseURL: 'http://localhost:8000/',
   timeout: 120 * 1000,
 })
 
