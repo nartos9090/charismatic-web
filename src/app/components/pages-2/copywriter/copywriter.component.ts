@@ -50,7 +50,7 @@ export class CopywriterComponent {
 
       const { data } = await this.apiService.axios.post('/v1/copywriting-project/create-sync', payload)
 
-      this.router.navigate(['/copywriter/' + data.id])
+      this.router.navigate(['/copywriter/' + data.data?.id])
     } catch (error) {
       console.log(error)
     } finally {
